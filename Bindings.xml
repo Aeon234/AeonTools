@@ -1,0 +1,8 @@
+<Bindings>
+  <Binding name="CLICK AeonTools_WMC_Placer:LeftButton"
+    category="|cffffc700Aeon:|r |cff1fcecbTools|r">
+  </Binding>
+  <Binding name="CLICK AeonTools_WMC_Remover:LeftButton"
+    category="|cffffc700Aeon:|r |cff1fcecbTools|r">
+  </Binding>
+</Bindings>

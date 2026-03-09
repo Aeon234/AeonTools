@@ -1,0 +1,64 @@
+## Interface: 120001
+## Title: |cffffc700Aeon:|r |cff1fcecbTools|r
+## Notes: Provides various in-game quality of life enhancements.
+## Author: Aeon
+## Version: @project-version@
+
+## SavedVariables: AeonToolsDB
+## OptionalDeps: SharedMedia, ElvUI, Cell, UnhaltedUnitFrames
+
+## X-Curse-Project-ID: 
+## X-Wago-ID: 
+
+## IconTexture: Interface\AddOns\AeonTools\Assets\logo.tga
+## Category: User Interface
+## Category-deDE: Benutzerinterface
+## Category-esES: Interfaz de usuario
+## Category-esMX: Interfaz de usuario
+## Category-frFR: Interface utilisateur
+## Category-itIT: Interfaccia utente
+## Category-koKR: 사용자 인터페이스
+## Category-ptBR: Interface do usuário
+## Category-ruRU: Интерфейс пользователя
+## Category-zhCN: 用户界面
+## Category-zhTW: 使用者介面
+
+Core.lua
+Locales\Localization.xml
+
+Util\API.lua
+Util\SharedWidgets.xml
+Util\SharedWidgets.lua
+Util\ModuleSettingsPanel.lua
+Util\BlizzardEditMode.lua
+
+Settings.lua
+
+
+# Modules
+# Interface
+Modules\Interface\EnlargeObjectiveText.lua
+Modules\Interface\EscapeMenuScale.lua
+Modules\Interface\ExtraActionButtonEnhanced.lua
+Modules\Interface\UIScale.lua
+
+# HUD & Overlays
+Modules\HUD\AltPowerText.lua
+Modules\HUD\CursorRing.lua
+Modules\HUD\InformationalPopups.lua
+Modules\HUD\InstanceDifficulty.lua
+Modules\HUD\PreyBar.lua
+
+# Gameplay
+Modules\Gameplay\CooldownManagerSlash.lua
+Modules\Gameplay\FocusMouseKeybind.lua
+
+# Automations
+Modules\Automation\CurrentExpansionFilter.lua
+
+# Group & Raid
+Modules\GroupTools\CantRelease.lua
+Modules\GroupTools\RaidMarkersBar.lua
+Modules\GroupTools\WorldMarkerCycler.lua
+
+
