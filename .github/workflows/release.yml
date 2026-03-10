@@ -3,23 +3,24 @@ name: Package and Release
 on:
   push:
     tags:
-      - '**'
+      - "**"
 
 jobs:
   release:
     runs-on: ubuntu-latest
     # specify the environment variables used by the packager, matching the secrets for the project on GitHub
     env:
-      CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      # CF_API_KEY: ${{ secrets.CF_API_KEY }}
       # WAGO_API_TOKEN: ${{ secrets.WAGO_API_TOKEN }}
-      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}  # this secret is pre-provided for the workflow and does not
-                                                 # need to be added yourself, we just reference it here.
+      GITHUB_OAUTH:
+        ${{ secrets.GITHUB_TOKEN }} # this secret is pre-provided for the workflow and does not
+        # need to be added yourself, we just reference it here.
     steps:
       # we first have to clone the AddOn project, this is a required step
       - name: Clone project
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # gets entire git history, needed for automatic changelogs
+          fetch-depth: 0 # gets entire git history, needed for automatic changelogs
 
       # once cloned, we just run the GitHub Action
       - name: Package and Release
