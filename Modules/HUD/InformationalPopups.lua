@@ -234,7 +234,7 @@ function IPU:CreatePopup(msg)
 	local text = frame:CreateFontString(nil, "ARTWORK")
 	local db = addon.db and addon.db.InformationalPopupsSettings
 	if db then
-		text:SetFont(db.fontName, db.fontSize, "OUTLINE")
+		text:SetFont(db.fontName, db.fontSize, db.fontOutline)
 	else
 		text:SetFont(addon.Expressway, 22, "OUTLINE")
 	end
@@ -485,6 +485,7 @@ function IPU:EditModePreviewPopups(previewKey)
 
 	local fontName = db.fontName or addon.Expressway
 	local fontSize = db.fontSize or 22
+	local fontFlag = db.fontOutline or "OUTLINE"
 
 	for i = 1, #previewOrder do
 		if not self.previewPopups[i] then
@@ -516,7 +517,7 @@ function IPU:EditModePreviewPopups(previewKey)
 			popup.isPreview = true
 
 			popup.text:SetText(msg.text)
-			popup.text:SetFont(fontName, fontSize, "OUTLINE")
+			popup.text:SetFont(fontName, fontSize, fontFlag)
 			popup.text:SetHeight(0) -- forces recalculation
 			popup:SetHeight(popup.text:GetStringHeight() + 6)
 
@@ -668,12 +669,13 @@ function IPU:UpdatePreview(previewText)
 	local db = addon.db.InformationalPopupsSettings
 	local fontName = db.fontName or addon.Expressway
 	local fontSize = db.fontSize or 22
+	local fontFlag = db.fontOutline or "OUTLINE"
 	local spacing = fontSize * 1.0
 
 	if not previewText then
 		for i = 1, #popupText do
 			local textPreview = popupText[i]
-			textPreview:SetFont(fontName, fontSize, "OUTLINE")
+			textPreview:SetFont(fontName, fontSize, fontFlag)
 			local offset = ((#popupText + 1) / 2 - i) * spacing
 			textPreview:ClearAllPoints()
 			textPreview:SetPoint("CENTER", container, "CENTER", 0, offset)
@@ -697,7 +699,7 @@ function IPU:UpdatePreview(previewText)
 		local textPreview = popupText[i]
 		local msg = messages[i]
 
-		textPreview:SetFont(fontName, fontSize, "OUTLINE")
+		textPreview:SetFont(fontName, fontSize, fontFlag)
 		textPreview:SetTextColor(msg.color.r, msg.color.g, msg.color.b, msg.color.a)
 		textPreview:SetText(msg.text)
 
@@ -716,6 +718,18 @@ end
 local Options_FontName_Dropdown = API.CreateDropdownOptions(
 	"InformationalPopupsSettings.fontName",
 	API.SharedMediaFontDropdownOptions(),
+	nil,
+	function()
+		if IPU.isEditing then
+			IPU:EditModePreviewPopups()
+		end
+		IPU:UpdatePreview()
+	end
+)
+
+local Options_FontFlag_Dropdown = API.CreateDropdownOptions(
+	"InformationalPopupsSettings.fontOutline",
+	API.FontFlagDropdownOptions(),
 	nil,
 	function()
 		if IPU.isEditing then
@@ -796,6 +810,11 @@ local OPTIONS_SCHEMATIC = {
 			type = "Dropdown",
 			label = L["FontName"],
 			menuData = Options_FontName_Dropdown,
+		},
+		{
+			type = "Dropdown",
+			label = L["FontFlag"],
+			menuData = Options_FontFlag_Dropdown,
 		},
 		{
 			type = "Slider",

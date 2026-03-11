@@ -196,7 +196,7 @@ function ID:ConstructFrame()
 	self:SetPoint("CENTER", difficulty, "CENTER", 0, 0)
 
 	local text = self:CreateFontString(nil, "OVERLAY")
-	text:SetFont(db.fontName or addon.Expressway, db.fontSize or 12, db.fontOutline or "OUTLINE")
+	text:SetFont(db.fontName or addon.Expressway, db.fontSize or 12, db.fontOutline)
 	text:SetPoint("LEFT")
 
 	self.text = text
@@ -268,6 +268,15 @@ local Options_FontName_Dropdown = API.CreateDropdownOptions(
 	end
 )
 
+local Options_FontFlag_Dropdown = API.CreateDropdownOptions(
+	"InstanceDifficultySettings.fontOutline",
+	API.FontFlagDropdownOptions(),
+	nil,
+	function()
+		ID:SettingsUpdate()
+	end
+)
+
 local OPTIONS_SCHEMATIC = {
 	title = L["AeonTools_Colon"] .. L["ID_Title"],
 	widgets = {
@@ -280,6 +289,11 @@ local OPTIONS_SCHEMATIC = {
 			type = "Dropdown",
 			label = L["FontName"],
 			menuData = Options_FontName_Dropdown,
+		},
+		{
+			type = "Dropdown",
+			label = L["FontFlag"],
+			menuData = Options_FontFlag_Dropdown,
 		},
 		{
 			type = "Slider",

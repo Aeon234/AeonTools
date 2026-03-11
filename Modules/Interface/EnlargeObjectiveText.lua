@@ -26,11 +26,11 @@ function EOT:PreviewOptions(visible)
 		EOT.Preview:SetPoint("CENTER")
 		local text = EOT.Preview:CreateFontString("OVERLAY")
 		text:SetPoint("CENTER")
-		text:SetFont(db.fontName, db.fontSize, "OUTLINE")
+		text:SetFont(db.fontName, db.fontSize, db.fontOutline)
 		text:SetText("|cffff2020Out of range.|r\n\n|cffffd200Peons Awoken: 1/5|r")
 		EOT.Preview.text = text
 	end
-	EOT.Preview.text:SetFont(db.fontName, db.fontSize, "OUTLINE")
+	EOT.Preview.text:SetFont(db.fontName, db.fontSize, db.fontOutline)
 	if visible then
 		EOT.Preview:Show()
 	else
@@ -42,6 +42,15 @@ end
 local Options_FontName_Dropdown = API.CreateDropdownOptions(
 	"EnlargeObjectiveTextSettings.fontName",
 	API.SharedMediaFontDropdownOptions(),
+	nil,
+	function()
+		EOT:PreviewOptions(true)
+	end
+)
+
+local Options_FontFlag_Dropdown = API.CreateDropdownOptions(
+	"EnlargeObjectiveTextSettings.fontOutline",
+	API.FontFlagDropdownOptions(),
 	nil,
 	function()
 		EOT:PreviewOptions(true)
@@ -61,6 +70,11 @@ local OPTIONS_SCHEMATIC = {
 			type = "Dropdown",
 			label = L["FontName"],
 			menuData = Options_FontName_Dropdown,
+		},
+		{
+			type = "Dropdown",
+			label = L["FontFlag"],
+			menuData = Options_FontFlag_Dropdown,
 		},
 		{
 			type = "Slider",
@@ -109,7 +123,7 @@ function EOT:Enable()
 		ORIGINAL_ERRORFRAME.flags = ORIGINAL_ERRORFRAME.flags or flags
 		ORIGINAL_ERRORFRAME.width = ORIGINAL_ERRORFRAME.width or UIErrorsFrame:GetWidth()
 		ORIGINAL_ERRORFRAME.height = ORIGINAL_ERRORFRAME.height or UIErrorsFrame:GetHeight()
-		UIErrorsFrame:SetFont(db.fontName or font, db.fontSize or 22, "OUTLINE")
+		UIErrorsFrame:SetFont(db.fontName or font, db.fontSize or 22, db.fontOutline or "OUTLINE")
 		UIErrorsFrame:SetWidth(800)
 		UIErrorsFrame:SetHeight(120)
 	end
