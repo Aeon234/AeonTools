@@ -7,7 +7,7 @@
 ## SavedVariables: AeonToolsDB
 ## OptionalDeps: SharedMedia, ElvUI, Cell, UnhaltedUnitFrames
 
-## X-Curse-Project-ID: 
+## X-Curse-Project-ID: 1482326
 ## X-Wago-ID: 
 
 ## IconTexture: Interface\AddOns\AeonTools\Assets\logo.tga

@@ -111,11 +111,12 @@ local function PB_EventHandler(self, event, w)
 	local preyInfo = PB:UpdatePreyInfo()
 	if event == "PLAYER_ENTERING_WORLD" or event == "QUEST_LOG_UPDATE" then
 		if preyInfo and preyInfo.visible == true then
-			PB:UpdatePreyBar()
 			PB:UpdateDisplay()
+			PB:UpdatePreyBar()
 			return
 		else
 			PB:UpdateDisplay()
+			PB:UpdatePreyBar()
 		end
 		return
 	end
@@ -123,6 +124,7 @@ local function PB_EventHandler(self, event, w)
 	if w.widgetID ~= PreyWidgetID then
 		return
 	end
+	PB:UpdatePreyBar()
 	PB:UpdateDisplay()
 end
 
