@@ -754,15 +754,15 @@ do --Slider
 	local SliderFrameMixin = {}
 
 	local TEX_COORDS = {
-		Thumb_Nomral = { 0, 0.5, 0, 0.25 },
+		Thumb_Normal = { 0, 0.5, 0, 0.25 },
 		Thumb_Disable = { 0.5, 1, 0, 0.25 },
 		Thumb_Highlight = { 0, 0.5, 0.25, 0.5 },
 
-		Back_Nomral = { 0, 0.25, 0.5, 0.625 },
+		Back_Normal = { 0, 0.25, 0.5, 0.625 },
 		Back_Disable = { 0.25, 0.5, 0.5, 0.625 },
 		Back_Highlight = { 0.5, 0.75, 0.5, 0.625 },
 
-		Forward_Nomral = { 0, 0.25, 0.625, 0.75 },
+		Forward_Normal = { 0, 0.25, 0.625, 0.75 },
 		Forward_Disable = { 0.25, 0.5, 0.625, 0.75 },
 		Forward_Highlight = { 0.5, 0.75, 0.625, 0.75 },
 
@@ -887,19 +887,19 @@ do --Slider
 		SetTextureCoord(self.Slider.Left, "Slider_Left")
 		SetTextureCoord(self.Slider.Middle, "Slider_Middle")
 		SetTextureCoord(self.Slider.Right, "Slider_Right")
-		SetTextureCoord(self.Slider.ThumbTexture, "Thumb_Nomral")
+		SetTextureCoord(self.Slider.ThumbTexture, "Thumb_Normal")
 		SetTextureCoord(self.Slider.ThumbHighlight, "Thumb_Highlight")
 
 		self.Back.Texture:SetTexture(Def.SliderTexture)
 		self.Back.Highlight:SetTexture(Def.SliderTexture)
-		SetTextureCoord(self.Back.Texture, "Back_Nomral")
+		SetTextureCoord(self.Back.Texture, "Back_Normal")
 		SetTextureCoord(self.Back.Highlight, "Back_Highlight")
 		self.Back.Highlight:SetBlendMode("ADD")
 		self.Back.Highlight:SetVertexColor(0.5, 0.5, 0.5)
 
 		self.Forward.Texture:SetTexture(Def.SliderTexture)
 		self.Forward.Highlight:SetTexture(Def.SliderTexture)
-		SetTextureCoord(self.Forward.Texture, "Forward_Nomral")
+		SetTextureCoord(self.Forward.Texture, "Forward_Normal")
 		SetTextureCoord(self.Forward.Highlight, "Forward_Highlight")
 		self.Forward.Highlight:SetBlendMode("ADD")
 		self.Forward.Highlight:SetVertexColor(0.5, 0.5, 0.5)
@@ -941,9 +941,10 @@ do --Slider
 		self.Slider:Enable()
 		self.Back:Enable()
 		self.Forward:Enable()
-		SetTextureCoord(self.Slider.ThumbTexture, "Thumb_Nomral")
-		SetTextureCoord(self.Back.Texture, "Back_Nomral")
-		SetTextureCoord(self.Forward.Texture, "Forward_Nomral")
+		SetTextureCoord(self.Slider.ThumbTexture, "Thumb_Normal")
+		SetTextureCoord(self.Slider.ThumbHighlight, "Thumb_Highlight")
+		SetTextureCoord(self.Back.Texture, "Back_Normal")
+		SetTextureCoord(self.Forward.Texture, "Forward_Normal")
 		self.Label:SetTextColor(1, 1, 1)
 		self.RightText:SetTextColor(1, 0.82, 0)
 	end
@@ -954,7 +955,8 @@ do --Slider
 		self.Forward:Disable()
 		self.Slider:UnlockHighlight()
 		SetTextureCoord(self.Slider.ThumbTexture, "Thumb_Disable")
-		SetTextureCoord(self.Back, "Back_Disable")
+		SetTextureCoord(self.Slider.ThumbHighlight, "Thumb_Disable")
+		SetTextureCoord(self.Back.Texture, "Back_Disable")
 		SetTextureCoord(self.Forward.Texture, "Forward_Disable")
 		self.Label:SetTextColor(0.5, 0.5, 0.5)
 		self.RightText:SetTextColor(0.5, 0.5, 0.5)
