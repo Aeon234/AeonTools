@@ -386,6 +386,8 @@ do --EditModeSettingsDialog
 		slider.onEnterFunc = widgetData.onEnterFunc
 		slider.onLeaveFunc = widgetData.onLeaveFunc
 		slider.isDraggingThumb = false
+		slider.dbKey = widgetData.dbKey
+		slider.shouldEnableOption = widgetData.shouldEnableOption
 
 		if widgetData.dbKey and addon.GetDBValue(widgetData.dbKey) then
 			slider:SetValue(addon.GetDBValue(widgetData.dbKey))
@@ -846,6 +848,11 @@ do --EditModeSettingsDialog
 
 				if widget.widgetType == "Dropdown" then
 					widget:UpdateSelectedText()
+				elseif widget.widgetType == "Slider" and widget.dbKey then
+					local value = addon.GetDBValue(widget.dbKey)
+					if value then
+						widget:SetValue(value)
+					end
 				end
 			end
 		end
