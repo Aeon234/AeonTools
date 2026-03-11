@@ -602,7 +602,6 @@ do -- Dropdown Presets
 				{ value = "MONOCHROME", text = L["Flag_Monochrome"] },
 				{ value = "OUTLINE", text = L["Flag_Outline"] },
 				{ value = "THICKOUTLINE", text = L["Flag_ThickOutline"] },
-				{ value = "SLUG", text = L["Flag_Slug"] },
 			},
 		}
 	end
