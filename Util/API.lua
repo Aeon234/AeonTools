@@ -593,6 +593,21 @@ do -- Dropdown Presets
 		}
 	end
 
+	local function FontFlagDropdownOptions()
+		return {
+			default = "OUTLINE",
+			checkCombat = true,
+			items = {
+				{ value = "", text = L["Flag_None"] },
+				{ value = "MONOCHROME", text = L["Flag_Monochrome"] },
+				{ value = "OUTLINE", text = L["Flag_Outline"] },
+				{ value = "THICKOUTLINE", text = L["Flag_ThickOutline"] },
+				{ value = "SLUG", text = L["Flag_Slug"] },
+			},
+		}
+	end
+	API.FontFlagDropdownOptions = FontFlagDropdownOptions
+
 	local function ModifierDropdownOptions()
 		return {
 			default = "SHIFT",
