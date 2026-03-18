@@ -187,7 +187,7 @@ end
 -- Create Frame
 function ID:ConstructFrame()
 	local db = addon.db and addon.db.InstanceDifficultySettings
-	if not db or not self then
+	if not db or not self or self.text then
 		return
 	end
 	local difficulty = _G.MinimapCluster.InstanceDifficulty
