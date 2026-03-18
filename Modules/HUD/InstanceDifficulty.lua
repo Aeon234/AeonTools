@@ -381,6 +381,7 @@ function ID:Enable()
 	end
 
 	self:SettingsUpdate()
+	self:UpdateFrame()
 end
 
 function ID:Disable()
