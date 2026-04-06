@@ -268,6 +268,7 @@ function IPU:ShowPopup(msgKey)
 	end
 
 	local popup = IPU:CreatePopup(msgData)
+	popup:SetHeight(popup.text:GetStringHeight())
 	tinsert(IPU.activePopups, popup)
 	IPU.popupsByType[msgData.type] = popup
 
